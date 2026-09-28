@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a routerLink="/operaciones" routerLinkActive="active" class="nav-link">Lista de operaciones</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/guardar-operacion" routerLinkActive="active" class="nav-link">Guardar operación</a>
+        </li>
+        <li class="nav-item text-right">
+            <a class="nav-link" (click)="closeSession()">Cerrar Sesion</a>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>Lista de Operaciones</h2>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Operacion</th>
+                <th>Importe</th>
+                <th>Cliente</th>
+                <th>Referencia</th>
+                <th>Estatus</th>
+                <th>Secreto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (operation of operations; track $index) {
+            <tr>
+                <td>{{operation?.operacion}}</td>
+                <td>{{operation?.importe}}</td>
+                <td>{{operation?.cliente}}</td>
+                <td>{{operation?.referencia}}</td>
+                <td>{{operation?.estatus}}</td>
+                <td>{{operation?.secreto}}</td>
+                <td>
+                    @if (operation.estatus === "Aprobada") {
+                        <button (click) = "cancelOperation(operation)" class="btn btn-danger">Cancelar</button>
+                    }
+                </td>
+            </tr>
+            } @empty {
+            <tr>
+                <td>No hay operaciones disponibles.</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

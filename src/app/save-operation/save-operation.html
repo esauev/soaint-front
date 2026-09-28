@@ -1,0 +1,27 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Guardar operación</h3>
+    <form (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label>Operacion: </label>
+            <input type="text" class="form-control" id="operacion" required
+            [(ngModel)] = "operation.operacion" name="operacion" />
+        </div>
+        <div class="form-group">
+            <label>Importe: </label>
+            <input type="number" class="form-control" id="importe" min="0" max="999999.99" maxlength="6" step=".99" required
+            [(ngModel)] = "operation.importe" name="importe" />
+        </div>
+        <div class="form-group">
+            <label>Cliente: </label>
+            <input type="text" class="form-control" id="cliente"
+            [(ngModel)] = "operation.cliente" name="cliente" />
+        </div>
+        <div class="form-group">
+            <label>Secreto: </label>
+            <input type="text" class="form-control" id="secreto" required
+            [(ngModel)] = "operation.secreto" name="secreto" />
+        </div>
+        <button class="btn btn-danger" (click)="goToListOperations()">Regresar</button>
+        <button class="btn btn-success offset-6">Guardar</button>
+    </form>
+</div>
